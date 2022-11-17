@@ -4,7 +4,7 @@
 
 <h2 align="center">Mission Statement</h2>
 
-<p align="center">According to a 2021 <a href="https://www.gov.uk/government/publications/music-and-streaming-market-study-update-paper/executive-summary">study</a> by the UK Government, there were 39 million monthly active users of music streaming services within the UK with <a href="https://techcrunch.com/2017/08/21/younger-consumers-use-two-or-more-apps-for-streaming-music-mobile-messaging-says-nielsen/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAG3YNpgcPUj6w4i0w-fB695mZUUmL9Fs-lwDSi2kbeyvfrmsIqczLeuScoA7hqn8_23_PwDE3B2BV2bCj85JnO3aIlxgbwWHXXJhuFGmjxTDwZ0zUYVaS7sQc4WbbBV3Xd-YcxuYtOt-IAGp02w9dKRrBfqvaW-PKmBYZCXPMN0Y">other figures</a> showing that in 2017 up to 60 percent of young people in the US use multiple streaming services at the same time. Despite this, the most popular music streaming platforms today offer no easy way to export user-created playlists to other platforms.</p>
+<p align="center">According to a 2021 <a href="https://www.gov.uk/government/publications/music-and-streaming-market-study-update-paper/executive-summary">study</a> by the UK Government, there were 39 million monthly active users of music streaming services within the UK with <a href="https://techcrunch.com/2017/08/21/younger-consumers-use-two-or-more-apps-for-streaming-music-mobile-messaging-says-nielsen/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAG3YNpgcPUj6w4i0w-fB695mZUUmL9Fs-lwDSi2kbeyvfrmsIqczLeuScoA7hqn8_23_PwDE3B2BV2bCj85JnO3aIlxgbwWHXXJhuFGmjxTDwZ0zUYVaS7sQc4WbbBV3Xd-YcxuYtOt-IAGp02w9dKRrBfqvaW-PKmBYZCXPMN0Y">other figures</a> showing that in 2017 up to 60 percent of young people in the US use multiple streaming services at the same time. Despite this, most popular music streaming platforms today offer no easy way to export user-created playlists to other competing platforms.</p>
 
 <p align="center">Thats where <strong>MixMatch</strong> comes in!</p>
 
@@ -39,5 +39,5 @@
 <ul>
     <li>A: Add sharing playlist functionality (twitter initially)</li>
     <li>B: Add profile status posts ability</li>
-    <li>C: Add connection to Deezer</li>
+    <li>C: Add connection to another streaming service (Amazon Music/Deezer/)</li>
 </ul>
