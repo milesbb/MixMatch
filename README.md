@@ -1,6 +1,6 @@
 <h1 align="center">MixMatch</h1>
 
-<p align="center"><a href="https://github.com/milesbb/MixMatch-BE">Backend Link</a></p>
+<p align="center">This primarily contains frontend infrastructure, you can find the backend <a href="https://github.com/milesbb/MixMatch-BE">here</a></p>
 
 <h2 align="center">Mission Statement</h2>
 
