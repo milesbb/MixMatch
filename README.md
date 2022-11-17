@@ -27,17 +27,17 @@
 <h2 align="center">v2. Additional Features</h2>
 
 <ul>
-<li>Users will be able to share their saved playlists so their friends can easily access and download their playlists between streaming services</li>
-    <li>All users will have access to MixMatch 'Masterlist' where they can browse and access all public playlists users have uploaded</li>
-    <li>A: MixMatch 'Studio' - Allow users to add/remove songs from their saves playlists within the app</li>
-    <li>B: Implement 'likes' and 'favourites' system for public playlists on MixMatch 'Masterlist'</li>
-    <li>C: Implement 'following' functionality and more in-depth profile page (shows playlists, likes, favourites, followers, following)</li>
+<li>A: Users will be able to share their saved playlists so their friends can easily access and download their playlists between streaming services</li>
+    <li>B: All users will have access to MixMatch 'Masterlist' where they can browse and access all public playlists users have uploaded</li>
+    <li>C: MixMatch 'Studio' - Allow users to add/remove songs from their saves playlists within the app</li>
 </ul>
 
 <h2 align="center">v3. Final Additional Features</h2>
 
 <ul>
-    <li>D: Add sharing playlist functionality (twitter initially)</li>
-    <li>E: Add profile status posts ability</li>
-    <li>F: Add connection to another streaming service (Amazon Music/Deezer/)</li>
+    <li>D: Implement 'likes' and 'favourites' system for public playlists on MixMatch 'Masterlist'</li>
+    <li>E: Implement 'following' functionality and more in-depth profile page (shows playlists, likes, favourites, followers, following</li>
+    <li>F: Add sharing playlist functionality (twitter initially)</li>
+    <li>G: Add profile status posts ability</li>
+    <li>H: Add connection to another streaming service (Amazon Music/Deezer/)</li>
 </ul>
