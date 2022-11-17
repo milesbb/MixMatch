@@ -20,8 +20,6 @@
     <li>Allow users to connect their Spotify and/or Apple Music accounts and upload an existing playlist from their Spotify/Apple Music account to MixMatch in their 'Playlist Library'</li>
     <li>Uploaded playlists will be able to be made private or public to all platform users</li>
     <li>A user will be able to select a playlist in their 'Playlist Library' and create an identical playlist on their alternative music-streaming service account</li>
-    <li>Users will be able to share their saved playlists so their friends can easily access and download their playlists between streaming services</li>
-    <li>All users will have access to MixMatch 'Masterlist' where they can browse and access all public playlists users have uploaded</li>
 </ul>
 
 <p align="center">Pages required for v1: Home page (Masterlist), Login, Register, Profile page, Playlist page, Upload (from) page, Upload (to) page</p>
@@ -29,6 +27,8 @@
 <h2 align="center">v2. Additional Features</h2>
 
 <ul>
+<li>Users will be able to share their saved playlists so their friends can easily access and download their playlists between streaming services</li>
+    <li>All users will have access to MixMatch 'Masterlist' where they can browse and access all public playlists users have uploaded</li>
     <li>A: MixMatch 'Studio' - Allow users to add/remove songs from their saves playlists within the app</li>
     <li>B: Implement 'likes' and 'favourites' system for public playlists on MixMatch 'Masterlist'</li>
     <li>C: Implement 'following' functionality and more in-depth profile page (shows playlists, likes, favourites, followers, following)</li>
