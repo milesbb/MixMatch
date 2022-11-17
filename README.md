@@ -37,7 +37,7 @@
 <h2 align="center">v3. Final Additional Features</h2>
 
 <ul>
-    <li>A: Add sharing playlist functionality (twitter initially)</li>
-    <li>B: Add profile status posts ability</li>
-    <li>C: Add connection to another streaming service (Amazon Music/Deezer/)</li>
+    <li>D: Add sharing playlist functionality (twitter initially)</li>
+    <li>E: Add profile status posts ability</li>
+    <li>F: Add connection to another streaming service (Amazon Music/Deezer/)</li>
 </ul>
