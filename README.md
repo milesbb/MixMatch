@@ -12,7 +12,7 @@
 
 <p align="center">Through dynamic use of Spotify, Apple Music, etc... API's, MixMatch will be able to offer you a simple and clean way to preserve, move, and share your favorite playlists!</p>
 
-<p align="center">Primary framework: React. Bootstrap styling, react-router-dom and other functional front-end packages tbd during development.</p>
+<p align="center">Primary framework: Typescript, React. Bootstrap styling, react-router-dom and other functional front-end packages tbd during development.</p>
 
 <h2 align="center">v1. Core Features</h2>
 
