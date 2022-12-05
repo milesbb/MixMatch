@@ -1,7 +1,12 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../redux/store/hooks";
 
 const Footer = () => {
+  const currentUser = useAppSelector((state) => {
+    return state.loadedProfile.currentUser;
+  });
+
   return (
     <>
       <div style={{ width: "100vw", background: "black" }}>
@@ -21,10 +26,38 @@ const Footer = () => {
                 className="text-left text-white "
                 style={{ listStyleType: "none", padding: 0, margin: 0 }}
               >
-                <li className="text-left">Profile</li>
-                <li className="text-left">Profile Settings</li>
-                <li className="text-left">Dashboard</li>
-                <li className="text-left">Playlists</li>
+                <li className="text-left">
+                  <Link
+                    className="nav-link"
+                    to={currentUser === null ? "/login" : "/profile"}
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li className="text-left">
+                  <Link
+                    className="nav-link"
+                    to={currentUser === null ? "/login" : "/profile"}
+                  >
+                    Profile Settings
+                  </Link>
+                </li>
+                <li className="text-left">
+                  <Link
+                    className="nav-link"
+                    to={currentUser === null ? "/login" : "/dashboard"}
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+                <li className="text-left">
+                  <Link
+                    className="nav-link"
+                    to={currentUser === null ? "/login" : "/profile"}
+                  >
+                    Playlists
+                  </Link>
+                </li>
               </ul>
             </Col>
             <Col className="p-5">
@@ -41,9 +74,30 @@ const Footer = () => {
                 className="text-left text-white "
                 style={{ listStyleType: "none", padding: 0, margin: 0 }}
               >
-                <li className="text-left">Import from Spotify</li>
-                <li className="text-left">Import from Apple Music</li>
-                <li className="text-left">Read about MixMatch Import</li>
+                <li className="text-left">
+                  <Link
+                    className="nav-link"
+                    to={currentUser === null ? "/login" : "/import"}
+                  >
+                    Import from Spotify
+                  </Link>
+                </li>
+                <li className="text-left">
+                  <Link
+                    className="nav-link"
+                    to={currentUser === null ? "/login" : "/import"}
+                  >
+                    Import from Apple Music
+                  </Link>
+                </li>
+                <li className="text-left">
+                  <Link
+                    className="nav-link"
+                    to={currentUser === null ? "/login" : "/import"}
+                  >
+                    Read about MixMatch Import
+                  </Link>
+                </li>
               </ul>
             </Col>
             <Col className="p-5">
@@ -60,9 +114,30 @@ const Footer = () => {
                 className="text-left text-white "
                 style={{ listStyleType: "none", padding: 0, margin: 0 }}
               >
-                <li className="text-left">Export to Spotify</li>
-                <li className="text-left">Export to Apple Music</li>
-                <li className="text-left">Read about MixMatch Export</li>
+                <li className="text-left">
+                  <Link
+                    className="nav-link"
+                    to={currentUser === null ? "/login" : "/export"}
+                  >
+                    Export to Spotify
+                  </Link>
+                </li>
+                <li className="text-left">
+                  <Link
+                    className="nav-link"
+                    to={currentUser === null ? "/login" : "/export"}
+                  >
+                    Export to Apple Music
+                  </Link>
+                </li>
+                <li className="text-left">
+                  <Link
+                    className="nav-link"
+                    to={currentUser === null ? "/login" : "/export"}
+                  >
+                    Read about MixMatch Export
+                  </Link>
+                </li>
               </ul>
             </Col>
             <Col className="p-5">
@@ -79,9 +154,36 @@ const Footer = () => {
                 className="text-left text-white "
                 style={{ listStyleType: "none", padding: 0, margin: 0 }}
               >
-                <li className="text-left">About MixMatch</li>
-                <li className="text-left">Github</li>
-                <li className="text-left">More Projects</li>
+                <li className="text-left">
+                  <a
+                    className="nav-link"
+                    href="https://github.com/milesbb/MixMatch#mixmatch"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    About MixMatch
+                  </a>
+                </li>
+                <li className="text-left">
+                  <a
+                    className="nav-link"
+                    href="https://github.com/milesbb/MixMatch"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Github
+                  </a>
+                </li>
+                <li className="text-left">
+                  <a
+                    className="nav-link"
+                    href="https://milesbb.tech"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    More Projects
+                  </a>
+                </li>
               </ul>
             </Col>
           </Row>

@@ -68,7 +68,7 @@ const Login = () => {
   };
 
   return (
-    <div className="p-5" style={{ height: "85vh", width: "100vw" }}>
+    <div className="p-5 text-white" style={{ height: "70vh", width: "100vw", background: "black"}}>
       <div className="w-50 mx-auto">
         <h2 className="my-4">Login</h2>
         <Form onSubmit={handleSubmit}>

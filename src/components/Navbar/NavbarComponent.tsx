@@ -33,12 +33,6 @@ const NavbarComponent = () => {
           <Link to="/profile" className="nav-link text-white mx-3">
             Profile
           </Link>
-          <Link to="/import" className="nav-link text-white mx-3">
-            Import Playlist
-          </Link>
-          <Link to="/export" className="nav-link text-white mx-3">
-            Export Playlist
-          </Link>
           <div className="ml-auto">
             <NavDropdown
               className="text-white"
