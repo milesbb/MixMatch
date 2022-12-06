@@ -74,48 +74,66 @@ export const fetchSpotifyAccessToken = async (
   if (spotifyResponse.refresh_token)
     localStorage.setItem("spotifyRefreshToken", spotifyResponse.refresh_token);
 
-  window.history.pushState("", "", redirect_uri)
+  window.history.pushState("", "", redirect_uri);
 
-  const userData = await getSpotifyAccountInfo()
+  const userData = await getSpotifyAccountInfo();
 
-  const spotifyPlaylists = await getSpotifyPlaylists(userData)
+  const spotifyPlaylists = await getSpotifyPlaylists(userData);
 
   const spotifyUserAndPlaylists = {
-    "user": userData,
-    "playlists": spotifyPlaylists
-  }
+    user: userData,
+    playlists: spotifyPlaylists,
+  };
 
   return spotifyUserAndPlaylists;
 };
 
 export const getSpotifyAccountInfo = async () => {
-    const config = {
-        headers: new Headers({
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + localStorage.getItem("spotifyAccessToken")
-        })
-    }
+  const config = {
+    headers: new Headers({
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("spotifyAccessToken"),
+    }),
+  };
 
-    const response = await fetch("https://api.spotify.com/v1/me", config)
-    const spotifyProfileData = await response.json()
+  const response = await fetch("https://api.spotify.com/v1/me", config);
+  const spotifyProfileData = await response.json();
 
-    return spotifyProfileData
-}
+  return spotifyProfileData;
+};
 
 export const getSpotifyPlaylists = async (userData: any) => {
-    const config = {
-        headers: new Headers({
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + localStorage.getItem("spotifyAccessToken")
-        })
-    }
+  const config = {
+    headers: new Headers({
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("spotifyAccessToken"),
+    }),
+  };
 
-    const response = await fetch("https://api.spotify.com/v1/users/" + userData.id + "/playlists", config)
-    const spotifyPlaylists = await response.json()
+  const response = await fetch(
+    "https://api.spotify.com/v1/users/" + userData.id + "/playlists",
+    config
+  );
+  const spotifyPlaylists = await response.json();
 
-    return spotifyPlaylists
-}
+  return spotifyPlaylists;
+};
 
 export const importSpotifyPlaylist = async (playlistId: string) => {
-    
-}
+  const config = {
+    headers: new Headers({
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("spotifyAccessToken"),
+    }),
+  };
+
+  const response = await fetch(
+    "https://api.spotify.com/v1/playlists/" +
+      playlistId +
+      "/tracks?fields=total,offset,next,limit,href,items(track(name,artists(name),album(name,images),preview_url))",
+    config
+  );
+  const playlistTracks = await response.json();
+
+  console.log(playlistTracks);
+};
