@@ -1,7 +1,9 @@
-import { Image, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Button, Image, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useAppSelector } from "../../redux/store/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/store/hooks";
+import { logoutUser } from "../../authorizations/MixMatch";
+import { CLEAR_USER } from "../../redux/actions/profileActions";
 
 const NavbarComponent = () => {
   const currentUser = useAppSelector((state) => {
@@ -9,12 +11,22 @@ const NavbarComponent = () => {
   });
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch()
+
+  const logout = async () => {
+    await logoutUser();
+    dispatch({type: CLEAR_USER})
+    navigate("/");
+  };
 
   return (
     <Navbar style={{ background: "#595959" }} className="px-4" expand="lg">
       <Navbar.Brand>
         <Link to="/">
-        <Image style={{width: "5rem"}} src="https://res.cloudinary.com/dlskdxln3/image/upload/v1670266477/MixMatch/titletransp_aulmxn.gif" />
+          <Image
+            style={{ width: "5rem" }}
+            src="https://res.cloudinary.com/dlskdxln3/image/upload/v1670266477/MixMatch/titletransp_aulmxn.gif"
+          />
         </Link>
       </Navbar.Brand>
 
@@ -42,7 +54,14 @@ const NavbarComponent = () => {
               <div className="ml-3">
                 <NavDropdown.Item to="/profile">Settings</NavDropdown.Item>
               </div>
-              <NavDropdown.Item>Logout</NavDropdown.Item>
+              <NavDropdown.Item>
+                <Button
+                  onClick={logout}
+                  variant="danger"
+                >
+                  Logout
+                </Button>
+              </NavDropdown.Item>
             </NavDropdown>{" "}
           </div>
         </>

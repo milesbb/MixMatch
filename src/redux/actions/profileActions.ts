@@ -4,6 +4,7 @@ import { AnyAction, Dispatch } from "redux";
 import { RootState } from "../store";
 
 export const SET_USER_INFO = "SET_USER_INFO";
+export const CLEAR_USER = "CLEAR_USER";
 
 export const getProfileInfo = (
   config: RequestInit,

@@ -1,4 +1,4 @@
-import { SET_USER_INFO } from "../actions/profileActions";
+import { CLEAR_USER, SET_USER_INFO } from "../actions/profileActions";
 
 interface actionInterface {
   type: string;
@@ -24,6 +24,11 @@ const profileReducer = (state = initialState, action: actionInterface) => {
       return {
         ...state,
         currentUser: action.payload,
+      };
+    case CLEAR_USER:
+      return {
+        ...state,
+        currentUser: null,
       };
     default:
       return state;
