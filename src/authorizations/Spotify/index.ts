@@ -51,7 +51,7 @@ export const fetchSpotifyAccessToken = async (
 
   const config = {
     method: "POST",
-    body: JSON.stringify(body),
+    body: body,
     headers: new Headers({
       "Content-Type": "application/x-www-form-urlencoded",
       Authorization:
@@ -68,7 +68,54 @@ export const fetchSpotifyAccessToken = async (
 
   const spotifyResponse = await response.json();
 
-  console.log(spotifyResponse);
+  if (spotifyResponse.access_token)
+    localStorage.setItem("spotifyAccessToken", spotifyResponse.access_token);
 
-  return spotifyResponse;
+  if (spotifyResponse.refresh_token)
+    localStorage.setItem("spotifyRefreshToken", spotifyResponse.refresh_token);
+
+  window.history.pushState("", "", redirect_uri)
+
+  const userData = await getSpotifyAccountInfo()
+
+  const spotifyPlaylists = await getSpotifyPlaylists(userData)
+
+  const spotifyUserAndPlaylists = {
+    "user": userData,
+    "playlists": spotifyPlaylists
+  }
+
+  return spotifyUserAndPlaylists;
 };
+
+export const getSpotifyAccountInfo = async () => {
+    const config = {
+        headers: new Headers({
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("spotifyAccessToken")
+        })
+    }
+
+    const response = await fetch("https://api.spotify.com/v1/me", config)
+    const spotifyProfileData = await response.json()
+
+    return spotifyProfileData
+}
+
+export const getSpotifyPlaylists = async (userData: any) => {
+    const config = {
+        headers: new Headers({
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("spotifyAccessToken")
+        })
+    }
+
+    const response = await fetch("https://api.spotify.com/v1/users/" + userData.id + "/playlists", config)
+    const spotifyPlaylists = await response.json()
+
+    return spotifyPlaylists
+}
+
+export const importSpotifyPlaylist = async (playlistId: string) => {
+    
+}
