@@ -1,3 +1,5 @@
+import { refreshUserTokens } from "../MixMatch";
+
 export const requestSpotifyAuthorization = (redirectLocation: string) => {
   const authorizeBaseUrl = "https://accounts.spotify.com/authorize";
   const redirect_uri = process.env.REACT_APP_FRONTEND_URL + redirectLocation;
@@ -114,9 +116,15 @@ export const getSpotifyPlaylists = async (userData: any) => {
     "https://api.spotify.com/v1/users/" + userData.id + "/playlists",
     config
   );
-  const spotifyPlaylists = await response.json();
 
-  return spotifyPlaylists;
+  if (response.status === 401) {
+    await refreshSpotifyTokens();
+    const result: any = await getSpotifyPlaylists(userData);
+    return result;
+  } else {
+    const spotifyPlaylists = await response.json();
+    return spotifyPlaylists;
+  }
 };
 
 export const createImportUrl = (playlistId: string, offset: number = 0) => {
@@ -157,8 +165,14 @@ export const importPlaylistToDb = async (
     config
   );
 
-  const playlistId = response.json();
-  console.log(playlistId);
+  if (response.status === 401) {
+    await refreshUserTokens();
+    await importPlaylistToDb(tracksArray, userId, playlistName)
+
+  } else {
+    const playlistId = response.json();
+    console.log(playlistId);
+  }
 };
 
 export const loadNextTracks = async (
@@ -254,5 +268,37 @@ export const importSpotifyPlaylist = async (
 
   for (const elem of promiseArray) {
     let result = await elem;
+  }
+};
+
+export const refreshSpotifyTokens = async () => {
+  const tokenEndpoint = "https://accounts.spotify.com/api/token";
+  let body =
+    "grant_type=refresh_token&refresh_token=" +
+    localStorage.getItem("spotifyRefreshToken") +
+    "&client_id=" +
+    process.env.REACT_APP_SPOTIFY_CLIENT_ID;
+
+  const config = {
+    method: "POST",
+    body: body,
+    headers: new Headers({
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization:
+        "Basic " +
+        btoa(
+          process.env.REACT_APP_SPOTIFY_CLIENT_ID +
+            ":" +
+            process.env.REACT_APP_SPOTIFY_SECRET_ID
+        ),
+    }),
+  };
+
+  const response = await fetch(tokenEndpoint, config);
+
+  const spotifyRefreshResp = await response.json();
+
+  if (spotifyRefreshResp.access_token) {
+    localStorage.setItem("spotifyAccessToken", spotifyRefreshResp.access_token);
   }
 };
