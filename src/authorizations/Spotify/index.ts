@@ -1,5 +1,7 @@
 import { refreshUserTokens } from "../MixMatch";
 
+// Redirects to Spotify OAuth Page
+
 export const requestSpotifyAuthorization = (redirectLocation: string) => {
   const authorizeBaseUrl = "https://accounts.spotify.com/authorize";
   const redirect_uri = process.env.REACT_APP_FRONTEND_URL + redirectLocation;
@@ -18,6 +20,8 @@ export const requestSpotifyAuthorization = (redirectLocation: string) => {
   window.location.href = url;
 };
 
+// Retrieves code on redirect from Spotify OAuth
+
 export const onPageLoad = () => {
   let code: string = "";
   if (window.location.search.length === 0) return code;
@@ -28,6 +32,8 @@ export const onPageLoad = () => {
     return code;
   }
 };
+
+// Fetches Spotify Access and Refresh Tokens
 
 export const fetchSpotifyAccessToken = async (
   code: string,
@@ -44,12 +50,6 @@ export const fetchSpotifyAccessToken = async (
     process.env.REACT_APP_SPOTIFY_CLIENT_ID +
     "&client_secret=" +
     process.env.REACT_APP_SPOTIFY_SECRET_ID;
-
-  //   const auth = Buffer.from(
-  // process.env.REACT_APP_SPOTIFY_CLIENT_ID +
-  //   ":" +
-  //   process.env.REACT_APP_SPOTIFY_SECRET_ID
-  //   ).toString("base64");
 
   const config = {
     method: "POST",
@@ -90,6 +90,8 @@ export const fetchSpotifyAccessToken = async (
   return spotifyUserAndPlaylists;
 };
 
+// Gets Spotify Account Data
+
 export const getSpotifyAccountInfo = async () => {
   const config = {
     headers: new Headers({
@@ -103,6 +105,8 @@ export const getSpotifyAccountInfo = async () => {
 
   return spotifyProfileData;
 };
+
+// Gets list of spotify playlists of user
 
 export const getSpotifyPlaylists = async (userData: any) => {
   const config = {
@@ -127,6 +131,8 @@ export const getSpotifyPlaylists = async (userData: any) => {
   }
 };
 
+// Generates import URL with dynamic offset for next array of tracks in playlist
+
 export const createImportUrl = (playlistId: string, offset: number = 0) => {
   const importUrl =
     "https://api.spotify.com/v1/playlists/" +
@@ -137,6 +143,8 @@ export const createImportUrl = (playlistId: string, offset: number = 0) => {
 
   return importUrl;
 };
+
+// Imports complete playlist to MixMatch DB
 
 export const importPlaylistToDb = async (
   tracksArray: any[],
@@ -167,13 +175,14 @@ export const importPlaylistToDb = async (
 
   if (response.status === 401) {
     await refreshUserTokens();
-    await importPlaylistToDb(tracksArray, userId, playlistName)
-
+    await importPlaylistToDb(tracksArray, userId, playlistName);
   } else {
     const playlistId = response.json();
     console.log(playlistId);
   }
 };
+
+// Loads next tracks in playlist due to 100 track limit
 
 export const loadNextTracks = async (
   nextUrl: string,
@@ -199,6 +208,8 @@ export const loadNextTracks = async (
   return data;
 };
 
+// Returns track loading promise for promise array
+
 export const createTrackLoadPromise = (
   nextUrl: string,
   masterTracksArray: any[],
@@ -216,6 +227,8 @@ export const createTrackLoadPromise = (
     );
   });
 };
+
+// Initial imports first 100 tracks of playlist and runs async loop that imports the rest of the tracks (if any)
 
 export const importSpotifyPlaylist = async (
   playlistId: string,
@@ -270,6 +283,8 @@ export const importSpotifyPlaylist = async (
     let result = await elem;
   }
 };
+
+// Refresh spotify auth tokens
 
 export const refreshSpotifyTokens = async () => {
   const tokenEndpoint = "https://accounts.spotify.com/api/token";
